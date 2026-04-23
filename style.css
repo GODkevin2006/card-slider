@@ -5,6 +5,7 @@
     --text: #000000;
     --block-text: #2f2f2f;
     --block-btn: #A6192E;
+    --hover-btn-primary: #870d1f;
     --test-background: #f4f4f4;
 }
 
@@ -104,6 +105,19 @@ img {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.btn-primary:hover {
+    background-color: var(--hover-btn-primary);
+}
+.btn-primary:hover, .btn-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .btn-link {
@@ -113,6 +127,7 @@ img {
     font-weight: 700;
     letter-spacing: 1px;
     border-bottom: 2px solid black;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .slider-dots {
