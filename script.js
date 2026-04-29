@@ -1,72 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.block-card');
     const container = document.querySelector('.js-block-cards');
-    const [btnPrev, btnNext] = document.querySelectorAll('.card__buttons button');
-    let currentIndex = 0;
+    if (container) {
+        const btnNext = document.getElementById('btn-next'); 
+        const btnBack = document.getElementById('btn-prev');
 
-    const observerOptions = {
-        root: container,
-        threshold: 0.6 // Mayor umbral evita que dos tarjetas peleen por el índice
-    };
+        const displacement = 550; 
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                currentIndex = Array.from(cards).indexOf(entry.target);
-                const allDotContainers = document.querySelectorAll('.slider-dots');
-                
-                allDotContainers.forEach(dotContainer => {
-                    const dots = dotContainer.querySelectorAll('.dot');
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    if (dots[currentIndex]) {
-                        dots[currentIndex].classList.add('active');
-                    }
-                });
-            }
+        btnNext.addEventListener('click', function() {
+            container.scrollLeft += displacement;
         });
-    }, observerOptions);
 
-    cards.forEach(card => observer.observe(card));
+        btnBack.addEventListener('click', function() {
+            container.scrollLeft -= displacement;
+        })
 
-    // --- Lógica de Navegación ---
+        const dotsActive = container.querySelectorAll('.dot');
+        const cards = container.querySelectorAll('.block-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const index = Array.from(cards).indexOf(entry.target);
+                if (entry.isIntersecting) {
+                    dotsActive[index].classList.add('active');
+                } else {
+                    dotsActive[index].classList.remove('active');
+                }
+            })
+        }, {threshold: 0.7 })
+        cards.forEach(card => observer.observe(card));
 
-    const autoPlayDelay = 4000; // 4 segundos es más amigable
-    let autoPlayInterval;
 
-    const scrollToCard = (index) => {
-        container.scrollTo({
-            left: index * container.offsetWidth,
-            behavior: 'smooth'
-        });
-    };
 
-    const startAutoPlay = () => {
-        autoPlayInterval = setInterval(() => {
-            let nextIndex = (currentIndex + 1) % cards.length;
-            scrollToCard(nextIndex);
-        }, autoPlayDelay);
-    };
 
-    const resetAutoPlay = () => {
-        clearInterval(autoPlayInterval);
-        startAutoPlay();
-    };
 
-    // Botones de flecha
-    btnNext?.addEventListener('click', () => {
-        let nextIndex = (currentIndex + 1) % cards.length;
-        scrollToCard(nextIndex);
-        resetAutoPlay();
-    });
-
-    btnPrev?.addEventListener('click', () => {
-        let prevIndex = (currentIndex - 1 + cards.length) % cards.length;
-        scrollToCard(prevIndex);
-        resetAutoPlay();
-    });
-
-    startAutoPlay();
-
-    container.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-    container.addEventListener('mouseleave', () => startAutoPlay());
+    }
 });

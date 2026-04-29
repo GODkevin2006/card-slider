@@ -8,9 +8,9 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <main class="card">
-        <div class="js-block-cards">
-            <section class="block-card" id="card-1">
+    <main class="card" role="region" aria-roledescription="carousel" aria-label="Destacados del proyecto">
+        <div class="js-block-cards" id="carousel-items" aria-live="polite">
+            <section class="block-card" id="card-1" role="group" aria-roledescription="slide" aria-label="1 de 4">
                 <div class="card-image">
                     <!-- <img src="./image/Captura de pantalla 2026-04-15 a las 2.45.40 p. m..png" alt=""> -->
                 </div>
@@ -28,15 +28,9 @@
                         <a href="#" class="btn-primary">LEARN MORE</a>
                         <a href="#" class="btn-link">GO TO WEBSITE</a>
                     </div>
-                    <div class="slider-dots">
-                        <a href="#card-1" class="dot"></a>
-                        <a href="#card-2" class="dot"></a>
-                        <a href="#card-3" class="dot"></a>
-                        <a href="#card-4" class="dot"></a>
-                    </div>
                 </div>
             </section>
-            <section class="block-card" id="card-2">
+            <section class="block-card" id="card-2" role="group" aria-roledescription="slide" aria-label="2 de 4">
                 <div class="card-image">
                     <!-- <img src="./image/Captura de pantalla 2026-04-15 a las 2.45.40 p. m..png" alt=""> -->
                 </div>
@@ -54,15 +48,9 @@
                         <a href="#" class="btn-primary">LEARN MORE</a>
                         <a href="#" class="btn-link">GO TO WEBSITE</a>
                     </div>
-                    <div class="slider-dots">
-                        <a href="#card-1" class="dot"></a>
-                        <a href="#card-2" class="dot"></a>
-                        <a href="#card-3" class="dot"></a>
-                        <a href="#card-4" class="dot"></a>
-                    </div>
                 </div>
             </section>
-            <section class="block-card" id="card-3">
+            <section class="block-card" id="card-3" role="group" aria-roledescription="slide" aria-label="3 de 4">
                 <div class="card-image">
                     <!-- <img src="./image/Captura de pantalla 2026-04-15 a las 2.45.40 p. m..png" alt=""> -->
                 </div>
@@ -80,15 +68,9 @@
                         <a href="#" class="btn-primary">LEARN MORE</a>
                         <a href="#" class="btn-link">GO TO WEBSITE</a>
                     </div>
-                    <div class="slider-dots">
-                        <a href="#card-1" class="dot"></a>
-                        <a href="#card-2" class="dot"></a>
-                        <a href="#card-3" class="dot"></a>
-                        <a href="#card-4" class="dot"></a>
-                    </div>
                 </div>
             </section>
-            <section class="block-card" id="card-4">
+            <section class="block-card" id="card-4" role="group" aria-roledescription="slide" aria-label="4 de 4">
                 <div class="card-image">
                     <!-- <img src="./image/Captura de pantalla 2026-04-15 a las 2.45.40 p. m..png" alt=""> -->
                 </div>
@@ -106,38 +88,20 @@
                         <a href="#" class="btn-primary">LEARN MORE</a>
                         <a href="#" class="btn-link">GO TO WEBSITE</a>
                     </div>
-                    <div class="slider-dots">
-                        <a href="#card-1" class="dot"></a>
-                        <a href="#card-2" class="dot"></a>
-                        <a href="#card-3" class="dot"></a>
-                        <a href="#card-4" class="dot"></a>
-                    </div>
+                    <nav class="slider-dots">
+                        <a href="#card-1" class="dot" aria-label="Ir a diapositiva 1"></a>
+                        <a href="#card-2" class="dot" aria-label="Ir a diapositiva 2"></a>
+                        <a href="#card-3" class="dot" aria-label="Ir a diapositiva 3"></a>
+                        <a href="#card-4" class="dot" aria-label="Ir a diapositiva 4"></a>
+                    </nav>
                 </div>
             </section>
+            
         </div>   
         <content class="card__buttons">
-            <button>
-                <=
-            </button>
-            <button>
-                =>
-            </button>
+            <button id="btn-prev" aria-controls="carousel-items" aria-label="Anterior diapositiva"> <= </button>
+            <button id="btn-next" aria-controls="carousel-items" aria-label="Siguiente diapositiva"> => </button>
         </content>         
-
-
-
-
-
-
-
-
-
-                <!-- <div class="slider-dots">
-                    <span class="dot"></span>
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div> -->
     </main>
 </body>
 </html>
