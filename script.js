@@ -23,26 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="#card-3" data-dot="3" class="dot" aria-label="Ir a diapositiva 3"></a>
                 <a href="#card-4" data-dot="4" class="dot" aria-label="Ir a diapositiva 4"></a>
             </nav>`;
-        arrayActions.forEach(section => {
-            section.innerHTML += dots_sections;
-        })
+        if (arrayActions) {
 
-        const dotsActive = container.querySelectorAll('.dot');
-        const cards = container.querySelectorAll('.block-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                const index = Array.from(cards).indexOf(entry.target);
-                if (entry.isIntersecting) {
-                    document.querySelectorAll(`[data-dot="${index + 1}"]`).forEach(dot => {
-                    dot.classList.add('active');
-            });
-                } else {
-                    document.querySelectorAll(`[data-dot="${index + 1}"]`).forEach(dot => {
-                    dot.classList.remove('active');
-            });
-                }
+            arrayActions.forEach(section => {
+                section.innerHTML += dots_sections;
             })
-        }, {threshold: 0.7 })
-        cards.forEach(card => observer.observe(card));
-    }
+
+            const dotsActive = container.querySelectorAll('.dot');
+            const cards = container.querySelectorAll('.block-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const index = Array.from(cards).indexOf(entry.target);
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll(`[data-dot="${index + 1}"]`).forEach(dot => {
+                        dot.classList.add('active');
+                });
+                    } else {
+                        document.querySelectorAll(`[data-dot="${index + 1}"]`).forEach(dot => {
+                        dot.classList.remove('active');
+                });
+                    }
+                })
+            }, {threshold: 0.7 })
+            cards.forEach(card => observer.observe(card));
+        }
+    }   
 });
