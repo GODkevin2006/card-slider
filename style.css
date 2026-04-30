@@ -121,7 +121,8 @@ img {
 .slider-dots {
     display: flex;
     gap: 15px;
-    align-items: center
+    align-items: center;
+    height: 22px;
 }
 .dot {
     width: 6px;
@@ -184,19 +185,23 @@ img {
         align-items: flex-start;
     }
     .card__buttons {
-        height: 96%;
+        height: 86%;
         align-items: end;
         justify-content: end;
+        gap: 3rem;
+        margin-right: 5rem;
     }
     .card__buttons button:last-child{
-        margin-right: 1rem;
+        margin-right: 3rem;
     }
-
-
     .js-block-cards {
         max-width: 100%;
     }
     .slider-dots {
-    display: block;
+        height: 22px;
     }
+    .card-content {
+    flex: 1;
+    padding: 70px 65px;
+}
 }
